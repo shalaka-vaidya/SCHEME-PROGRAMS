@@ -1,0 +1,12 @@
+(define (esort ls)
+	(if (null? ls) '()
+		(cons (small (car ls) (cdr ls)) (esort (remover (small (car ls) (cdr ls)) ls)))))
+(define (remover n ls)
+	(cond ((null? ls) '())
+	      ((= n (car ls)) (cdr ls))
+	      (else (cons (car ls) (remover n (cdr ls))))))
+(define (small n ls)
+	(cond ((null? ls) n)
+		((>= n (car ls)) (small (car ls) (cdr ls)))
+		(else (small n (cdr ls)))))
+	
